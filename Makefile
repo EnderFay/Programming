@@ -1,3 +1,3 @@
 all:
-	main.c func.c head.h
+	gcc main.c func.c head.h
 	./a.out
