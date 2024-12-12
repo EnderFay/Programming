@@ -10,7 +10,7 @@ int main(){
     char author[35];
 
     while (1){
-        printf("1. Add magazine\n2. Read magazines\n3. Delete magazine\n4. Search magazine\n5. Exit\n");
+        printf("1. Add magazine\n2. Read magazines\n3. Delete magazine\n4. Search magazine\n5. Edit magazine\n6. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
