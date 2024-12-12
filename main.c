@@ -53,6 +53,12 @@ int main(){
                 }
 
             case 5:
+                printf("Enter name of the magazine to edit: ");
+                scanf("%s", name);
+                EditMag(filename, name);
+                break;
+
+            case 6:
                 exit(0);
                 
             default:
