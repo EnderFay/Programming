@@ -93,3 +93,36 @@ void SearchMagByAuthor(const char *filename, const char *authorToSearch){
     }
     fclose(file);
 }
+
+void EditMag(const char *filename, const char *nameToEdit){
+    mag m;
+    FILE *file = fopen(filename, "r");
+    FILE *temp = fopen("temp.txt", "w");
+    if (!file || !temp){
+        perror("Unable to open file");
+        return;
+    }
+    int found = 0;
+    while (fscanf(file, "%s %s %s %s\n", m.name, m.author, m.pass, m.release_date) != EOF){
+        if (strcmp(m.name, nameToEdit) == 0) {
+            found = 1;
+            printf("Editing magazine: Name: %s, Author: %s, Pass: %s, Release date: %s\n", m.name, m.author, m.pass, m.release_date);
+            printf("Enter new name: ");
+            scanf("%s", m.name);
+            printf("Enter new author: ");
+            scanf("%s", m.author);
+            printf("Enter new pass(approved or rejected): ");
+            scanf("%s", m.pass);
+            printf("Enter new release date: ");
+            scanf("%s", m.release_date);
+        }
+        fprintf(temp, "%s %s %s %s\n", m.name, m.author, m.pass, m.release_date);
+    }
+    if (!found) {
+        printf("Magazine not found\n");
+    }
+    fclose(file);
+    fclose(temp);
+    remove(filename);
+    rename("temp.txt", filename);
+}
